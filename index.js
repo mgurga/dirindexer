@@ -15,9 +15,6 @@ program
 
 program.parse(process.argv);
 
-var fileStream = fs.createWriteStream(program.output, {"flags": "a"});
-var searchedURLs = [];
-
 if(program.debug == undefined) {
     program.debug = false;
 }
@@ -38,6 +35,9 @@ if(program.url == undefined) {
     console.error("error: option `-u, --url <value>` missing");
     process.exit(1)
 }
+
+var fileStream = fs.createWriteStream(program.output, {"flags": "a"});
+var searchedURLs = [];
 
 if(program.urlHeader) {
     fileStream.write("&&&&&NEWSITE");
